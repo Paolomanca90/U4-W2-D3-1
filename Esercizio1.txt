@@ -1,0 +1,23 @@
+select count(*) as TotaleOrdini from Orders
+
+select count(*) as TotaleClienti from Customers
+
+select count(*) as TotaleClienti from Customers where city='London'
+
+select avg(Freight) as MediaOrdine from Orders
+
+select avg(Freight) as MediaOrdine from Orders where customerId='BOTTM'
+
+select sum(Freight) as MediaOrdine, CustomerID from Orders group by CustomerID
+
+select count(CustomerId) as NumeroClienti, City from Customers group by City
+
+select sum(UnitPrice * Quantity) as TotaleOrdini, OrderId from [Order Details] group by OrderID
+
+select sum(UnitPrice * Quantity) as TotaleOrdini, OrderId from [Order Details] where OrderID=10248 group by OrderID
+
+select count(*) as NumeroProdotti, CategoryID from Products group by CategoryID
+
+select count(*) as NumeroOrdini, ShipCountry from Orders group by ShipCountry
+
+select avg(Freight) as MediaOrdine, ShipCountry from Orders group by ShipCountry
