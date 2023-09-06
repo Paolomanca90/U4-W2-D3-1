@@ -53,10 +53,12 @@ namespace U1_W2_D3_Esercitazione_ContoCorrente
             if (movimentazione == "Versamento")
             {
                 NuovoVersamento(importo);
+                Console.WriteLine("Versamento effettuato con successo.");
             }
             else if (movimentazione == "Prelievo")
             {
                 NuovoPrelievo(importo);
+                Console.WriteLine("Prelievo effettuato con successo.");
             }
             else
             {
@@ -85,12 +87,12 @@ namespace U1_W2_D3_Esercitazione_ContoCorrente
 
         public void ListaMovimentazioni()
         {
-            Console.WriteLine("===== Estratto conto n " + NumeroConto + " =====");
+            Console.WriteLine("===== Estratto conto n. " + NumeroConto + " =====");
             foreach (Movimentazioni mov in movimentazioniList)
             {
-                Console.WriteLine($"Movimentazione: {mov.Movimentazione} , importo: {mov.Importo:N}");
+                Console.WriteLine($"Movimentazione: {mov.Movimentazione} - importo: {mov.Importo:N}");
             }
-            Console.WriteLine("Saldo totale: " + Saldo);
+            Console.WriteLine($"Saldo totale: {Saldo:N}");
         }
 
 
@@ -142,21 +144,22 @@ namespace U1_W2_D3_Esercitazione_ContoCorrente
 
             ContoCorrente newConto = new ContoCorrente(nome, cognome, dateTime, numeroConto);
             contoCorrenteList.Add(newConto);
-            Console.WriteLine($"Operazione di creazione del conto n {numeroConto} completata!");
+            Console.WriteLine($"Operazione di creazione del c/c n. {numeroConto} completata!");
         }
 
         static void Lista()
         {
-            Console.WriteLine("============ Lista C/C aperti ============");
+            Console.WriteLine("============ Lista C/c aperti ============");
+            Console.WriteLine();
             foreach (ContoCorrente conto in contoCorrenteList)
             {
-                Console.WriteLine($"Conto corrente n {conto.NumeroConto}, saldo: {conto.Saldo}");
+                Console.WriteLine($"C/c n. {conto.NumeroConto} creato in data {conto.DataAperturaConto.ToShortDateString()} - saldo: {conto.Saldo:N}");
             }
         }
 
         static void MostraMovimentazioni()
         {
-            Console.WriteLine("Inserisci il numero del conto corrente!");
+            Console.Write("Inserisci il numero del conto corrente: ");
             int numeroConto = Int32.Parse(Console.ReadLine());
             ContoCorrente newConto = null;
             foreach (ContoCorrente conto in contoCorrenteList)
@@ -173,17 +176,17 @@ namespace U1_W2_D3_Esercitazione_ContoCorrente
             }
             else
             {
-                Console.WriteLine("Conto corrente non trovato nell'archivio.");
+                Console.WriteLine("C/c non trovato nell'archivio.");
             }
         }
 
         static void NuovaOperazione()
         {
-            Console.WriteLine("Inserisci il numero del conto corrente!");
+            Console.Write("Inserisci il numero del conto corrente: ");
             int numeroConto = Int32.Parse(Console.ReadLine());
-            Console.WriteLine("É un prelievo o un versamento?");
+            Console.Write("É un Prelievo o un Versamento? ");
             string movimentazione = Console.ReadLine();
-            Console.WriteLine("Inserisci l'importo");
+            Console.Write("Inserisci l'importo: ");
             double importo = double.Parse(Console.ReadLine());
 
             ContoCorrente newConto = null;
@@ -202,7 +205,7 @@ namespace U1_W2_D3_Esercitazione_ContoCorrente
             }
             else
             {
-                Console.WriteLine("Conto corrente non trovato nell'archivio.");
+                Console.WriteLine("C/c non trovato nell'archivio.");
             }
         }
 
